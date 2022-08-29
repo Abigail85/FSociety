@@ -3,15 +3,15 @@ package com.co.lineadevida.apirest.models;
 import lombok.Data;
 
 @Data
-public class User {
+public class  User {
 
-    private String firstName;
+     private String firstName;
 
-    private String lastName;
+     private String lastName;
 
-    private Integer document;
+     private  Integer document;
 
-    private String password;
+     private   String password;
 
 
 }

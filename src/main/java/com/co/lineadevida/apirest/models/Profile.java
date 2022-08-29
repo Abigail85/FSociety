@@ -1,18 +1,19 @@
 package com.co.lineadevida.apirest.models;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 
 public class Profile {
 
     @Getter @Setter
-    private String id;
+    private String idProfile;
 
     @Getter @Setter
     private String image;
@@ -20,6 +21,9 @@ public class Profile {
     @Getter @Setter
     private String phone;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUser")
     User user;
 
     @Getter @Setter
