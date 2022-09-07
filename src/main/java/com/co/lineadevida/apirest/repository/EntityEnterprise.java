@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -33,4 +34,7 @@ public class EntityEnterprise {
 
     @Column(name = "updateAtEnterprise", nullable = true)
     private Date updateAtEnterprise ;
+
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "idEnterprise")
+    private Collection <EntityTransaction> transactionCollection;
 }
