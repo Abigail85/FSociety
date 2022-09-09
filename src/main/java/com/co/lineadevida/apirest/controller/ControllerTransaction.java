@@ -45,13 +45,13 @@ public class ControllerTransaction {
     }
 
     @ApiOperation(value = "End ponit edit transaction")
-    @GetMapping(path = "/editTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(path = "/editTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> editTransaction(@RequestBody EntityTransaction transaction){
         return new ResponseEntity<Object>(servicesTransaction.editTransaction(transaction), HttpStatus.OK) ;
     }
 
     @ApiOperation(value = "End ponit delete transaction")
-    @GetMapping(path = "/deleteTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/deleteTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> deleteTransaction(@RequestBody EntityTransaction transaction){
         return new ResponseEntity<Object>(servicesTransaction.deleteTransaction(transaction), HttpStatus.OK) ;
     }
