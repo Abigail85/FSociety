@@ -28,8 +28,8 @@ public Optional<EntityTransaction> searchEmployee(Long idTransaction){
 
 public Boolean insertTransaction(EntityTransaction transaction){
     try{
+        repositoryTransaction.findById(transaction.getIdTransaction());
         repositoryTransaction.save(transaction);
-
     }catch (Exception e){
         return Boolean.FALSE;
     }
