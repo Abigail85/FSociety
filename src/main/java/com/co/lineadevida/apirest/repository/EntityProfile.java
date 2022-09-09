@@ -30,5 +30,12 @@ public class EntityProfile {
     private LocalDate createdAtProfile = LocalDate.now();
 
     @Column(name = "updateAtProfile", nullable = true)
-    private LocalDate updateAtProfile = LocalDate.now();
+    private LocalDate updateAtProfile ;
+
+    @JsonIgnore
+    @JoinColumn (name = "idEmployee", referencedColumnName = "idEmployee")
+    @OneToOne  (optional = false)
+    private EntityEmployee idEmployee;
+
+
 }

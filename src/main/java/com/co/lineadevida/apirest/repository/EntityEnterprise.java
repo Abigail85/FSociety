@@ -1,6 +1,7 @@
 package com.co.lineadevida.apirest.repository;
 
 import com.co.lineadevida.apirest.util.Enum_RoleName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -33,8 +34,16 @@ public class EntityEnterprise {
     private LocalDate createdAtEnterprise = LocalDate.now();
 
     @Column(name = "updateAtEnterprise", nullable = true)
-    private Date updateAtEnterprise ;
+    private LocalDate updateAtEnterprise ;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "idEnterprise")
-    private Collection <EntityTransaction> transactionCollection;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTransaction")
+    EntityTransaction[] transactions;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idEnterprise")
+    private Collection<EntityEmployee> employeesCollection;
+
+
 }

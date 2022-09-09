@@ -3,8 +3,8 @@ package com.co.lineadevida.apirest.util;
 import java.util.Arrays;
 
 public enum Enum_RoleName {
-    ROLE_ADMIN("Role admin","1"),
-    ROLE_OPERARIO("Role operario","2"),
+    ROLE_ADMIN("administrador","1"),
+    ROLE_OPERARIO("operario","2"),
     DEFAULT("N/A","N/A");
     private final String roleName;
     private final String roleCode;

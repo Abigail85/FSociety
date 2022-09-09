@@ -1,6 +1,7 @@
 package com.co.lineadevida.apirest.repository;
 
 import com.co.lineadevida.apirest.util.Enum_RoleName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,8 +29,8 @@ public class EntityTransaction {
     @Column(name = "updateAtTransaction", nullable = true)
     private Date updateAtTransaction;
 
-    @JoinColumn (name = "idEnterprise", referencedColumnName = "idEnterprise")
-    @ManyToOne (optional = false)
-    private EntityEnterprise idEnterprise;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn (name = "idEnterprise")
+    EntityEnterprise enterprise;
 
 }

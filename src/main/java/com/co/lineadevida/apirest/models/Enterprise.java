@@ -1,12 +1,9 @@
 package com.co.lineadevida.apirest.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Enterprise {
@@ -26,7 +23,7 @@ public class Enterprise {
     @Setter @Getter
     private String address;
 
-    @JsonIgnore
+   /* @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUser")
     User[] users;
@@ -34,10 +31,10 @@ public class Enterprise {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name = "idTransaction")
-    Transaction[] transactions;
+    Transaction[] transactions;*/
 
     @Setter @Getter
-    private Date createdAt;
+    private Date createdAt ;
 
     @Setter @Getter
     private Date updateAt;

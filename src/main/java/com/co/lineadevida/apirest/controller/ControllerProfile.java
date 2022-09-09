@@ -20,13 +20,7 @@ public class ControllerProfile {
     @Autowired
     ServicesProfile servicesProfile;
 
-    @ApiOperation(value = "end point to create a profile")
-    @PostMapping(path = "/createProfile",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Boolean>createProfile(@RequestBody EntityProfile profile){
-
-        return new ResponseEntity<Boolean>(servicesProfile.createProfile(profile), HttpStatus.OK);
-    }
     @ApiOperation(value = "End ponit search profile")
     @GetMapping(path = "/searchProfile/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 

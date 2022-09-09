@@ -1,8 +1,10 @@
 package com.co.lineadevida.apirest.controller;
 
 import com.co.lineadevida.apirest.repository.EntityEmployee;
+import com.co.lineadevida.apirest.repository.EntityEnterprise;
 import com.co.lineadevida.apirest.repository.EntityTransaction;
 import com.co.lineadevida.apirest.services.ServicesEmployee;
+import com.co.lineadevida.apirest.services.ServicesEnterprise;
 import com.co.lineadevida.apirest.services.ServicesTransaction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +22,9 @@ public class ControllerTransaction {
     @Autowired
     ServicesTransaction servicesTransaction;
 
+    @Autowired
+    ServicesEnterprise servicesEnterprise;
+
     @ApiOperation(value = "End point to list Transaction ")
     @GetMapping(path = "/listTransaction",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> listTransaction(){
@@ -27,9 +32,10 @@ public class ControllerTransaction {
     }
 
     @ApiOperation(value = "End point insert Transaction")
-    @PostMapping(path = "/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean>insertTransaction(@RequestBody EntityTransaction transaction){
-        return new ResponseEntity<Boolean>(servicesTransaction.insertTransaction(transaction),HttpStatus.OK);
+    @PostMapping(path = "/Enterprise/{id}/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean>insertTransaction(@RequestBody EntityTransaction transaction, EntityEnterprise id){
+
+        return new ResponseEntity<Boolean>(servicesTransaction.insertTransaction(transaction,id),HttpStatus.OK);
     }
 
     @ApiOperation(value = "End ponit search transaction")

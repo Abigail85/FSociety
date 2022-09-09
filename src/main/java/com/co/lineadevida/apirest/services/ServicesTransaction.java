@@ -1,8 +1,6 @@
 package com.co.lineadevida.apirest.services;
 
-import com.co.lineadevida.apirest.repository.EntityEmployee;
-import com.co.lineadevida.apirest.repository.EntityTransaction;
-import com.co.lineadevida.apirest.repository.RepositoryTransaction;
+import com.co.lineadevida.apirest.repository.*;
 import org.apache.catalina.webresources.AbstractSingleArchiveResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +14,9 @@ public class ServicesTransaction {
 @Autowired
 RepositoryTransaction repositoryTransaction;
 
+    @Autowired
+    RepositoryEnterprise repositoryEnterprise;
+
 public List<EntityTransaction> toList(){
     List<EntityTransaction> listTransaction = repositoryTransaction.findAll();
     return listTransaction;
@@ -26,9 +27,9 @@ public Optional<EntityTransaction> searchTransaction(Long idTransaction){
     return listSearch;
 }
 
-public Boolean insertTransaction(EntityTransaction transaction){
+public Boolean insertTransaction(EntityTransaction transaction, EntityEnterprise id){
     try{
-        repositoryTransaction.findById(transaction.getIdEnterprise().getIdEnterprise());
+        repositoryEnterprise.findById(id.getIdEnterprise());
         repositoryTransaction.save(transaction);
     }catch (Exception e){
         return Boolean.FALSE;
@@ -47,7 +48,7 @@ public Boolean editTransaction(EntityTransaction transaction){
 
 public Boolean deleteTransaction(EntityTransaction transaction){
     try{
-        repositoryTransaction.findById(transaction.getIdEnterprise().getIdEnterprise());
+
         repositoryTransaction.delete(transaction);
     }catch (Exception e){
         return Boolean.FALSE;
