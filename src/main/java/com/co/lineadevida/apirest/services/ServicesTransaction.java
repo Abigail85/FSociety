@@ -21,15 +21,34 @@ public List<EntityTransaction> toList(){
     return listTransaction;
 }
 
-public Optional<EntityTransaction> searchEmployee(Long idTransaction){
+public Optional<EntityTransaction> searchTransaction(Long idTransaction){
     Optional<EntityTransaction> listSearch = repositoryTransaction.findById(idTransaction);
     return listSearch;
 }
 
 public Boolean insertTransaction(EntityTransaction transaction){
     try{
+        repositoryTransaction.findById(transaction.getIdEnterprise().getIdEnterprise());
+        repositoryTransaction.save(transaction);
+    }catch (Exception e){
+        return Boolean.FALSE;
+    }
+    return Boolean.TRUE;
+}
+public Boolean editTransaction(EntityTransaction transaction){
+    try{
         repositoryTransaction.findById(transaction.getIdTransaction());
         repositoryTransaction.save(transaction);
+    }catch (Exception e){
+        return Boolean.FALSE;
+    }
+    return Boolean.TRUE;
+}
+
+public Boolean deleteTransaction(EntityTransaction transaction){
+    try{
+        repositoryTransaction.findById(transaction.getIdEnterprise().getIdEnterprise());
+        repositoryTransaction.delete(transaction);
     }catch (Exception e){
         return Boolean.FALSE;
     }

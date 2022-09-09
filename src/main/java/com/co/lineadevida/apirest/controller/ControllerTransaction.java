@@ -23,7 +23,6 @@ public class ControllerTransaction {
     @ApiOperation(value = "End point to list Transaction ")
     @GetMapping(path = "/listTransaction",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> listTransaction(){
-
         return new ResponseEntity<Object>(servicesTransaction.toList(), HttpStatus.OK) ;
     }
 
@@ -35,11 +34,20 @@ public class ControllerTransaction {
 
     @ApiOperation(value = "End ponit search transaction")
     @GetMapping(path = "/searchTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-
     public ResponseEntity<Object> searchTransaction(@PathVariable Long id){
+        return new ResponseEntity<Object>(servicesTransaction.searchTransaction(id), HttpStatus.OK) ;
+    }
 
-        return new ResponseEntity<Object>(servicesTransaction.searchEmployee(id), HttpStatus.OK) ;
+    @ApiOperation(value = "End ponit edit transaction")
+    @GetMapping(path = "/editTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> editTransaction(@RequestBody EntityTransaction transaction){
+        return new ResponseEntity<Object>(servicesTransaction.editTransaction(transaction), HttpStatus.OK) ;
+    }
 
+    @ApiOperation(value = "End ponit delete transaction")
+    @GetMapping(path = "/deleteTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> deleteTransaction(@RequestBody EntityTransaction transaction){
+        return new ResponseEntity<Object>(servicesTransaction.deleteTransaction(transaction), HttpStatus.OK) ;
     }
 
 }
