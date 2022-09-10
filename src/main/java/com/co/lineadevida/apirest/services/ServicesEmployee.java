@@ -15,8 +15,16 @@ import java.util.Optional;
 @Service
 public class ServicesEmployee {
 
+
+    private RepositoryEmployee repositoryEmployee;
+
+
     @Autowired
-    RepositoryEmployee repositoryEmployee;
+    public void setRepository (RepositoryEmployee repositoryEmployee){
+        this.repositoryEmployee = repositoryEmployee;
+    }
+
+
 
     @Autowired
     RepositoryProfile repositoryProfile;
@@ -72,8 +80,13 @@ public class ServicesEmployee {
         repositoryEmployee.save(updateEmployee);
     }
 
-    public void deleteEmployee(EntityEmployee idEmployee){
-        repositoryEmployee.delete(idEmployee);
+    public String deleteEmployee(EntityEmployee idEmployee){
+        if(idEmployee !=null) {
+             repositoryEmployee.delete(idEmployee);
+             return "El usuario se elimino exitosamente";
+        }else{
+            return "El id = " + idEmployee +" No existe";
+        }
 
 
     }

@@ -3,6 +3,7 @@ package com.co.lineadevida.apirest.services;
 
 import com.co.lineadevida.apirest.repository.EntityEmployee;
 import com.co.lineadevida.apirest.repository.EntityEnterprise;
+import com.co.lineadevida.apirest.repository.RepositoryEmployee;
 import com.co.lineadevida.apirest.repository.RepositoryEnterprise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,19 @@ import java.util.Optional;
 @Service
 public class ServicesEnterprise {
 
-@Autowired
-RepositoryEnterprise repositoryEnterprise;
 
-    public ServicesEnterprise() {
+private RepositoryEnterprise repositoryEnterprise;
+
+
+
+    @Autowired
+    public void setRepository (RepositoryEnterprise repositoryEnterprise){
+        this.repositoryEnterprise = repositoryEnterprise;
     }
+
+
+
+
 
     public List<EntityEnterprise> toList(){
     List<EntityEnterprise> listEnterprise = repositoryEnterprise.findAll();
