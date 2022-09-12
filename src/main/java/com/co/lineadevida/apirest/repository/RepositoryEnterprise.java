@@ -1,5 +1,6 @@
 package com.co.lineadevida.apirest.repository;
 
+import com.co.lineadevida.apirest.models.EntityEnterprise;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public interface RepositoryEnterprise extends JpaRepository <EntityEnterprise, Long> {
+    //List<EntityEnterprise> findEntityEnterpriseBy(Long idEnterprise);
 
 
 }

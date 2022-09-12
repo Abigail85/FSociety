@@ -1,41 +1,42 @@
-package com.co.lineadevida.apirest.repository;
+package com.co.lineadevida.apirest.models;
 
-import com.co.lineadevida.apirest.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "profile")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class EntityProfile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idProfile", nullable = false)
-    private Long idProfile;
+    private Long idProfile ;
 
-    @Column(name = "imageProfile", nullable = false)
+    @Column(name = "imageProfile",nullable = true)
     private String imageProfile;
 
-    @Column(name = "phoneProfile", nullable = false)
+    @Column(name = "phoneProfile",nullable = true)
     private String phoneProfile;
 
     @Column(name = "createdAtProfile", nullable = false)
-    private LocalDate createdAtProfile = LocalDate.now();
+    private LocalDate createdAtProfile ;
 
     @Column(name = "updateAtProfile", nullable = true)
     private LocalDate updateAtProfile ;
 
-    @JsonIgnore
+    private String mensaje;
     @JoinColumn (name = "idEmployee", referencedColumnName = "idEmployee")
-    @OneToOne  (optional = false)
-    private EntityEmployee idEmployee;
+    @OneToOne    (optional = false)
+    private EntityEmployee idEmployee ;
 
 
 }

@@ -1,9 +1,8 @@
 package com.co.lineadevida.apirest.controller;
 
-import com.co.lineadevida.apirest.repository.EntityEmployee;
-import com.co.lineadevida.apirest.repository.EntityEnterprise;
-import com.co.lineadevida.apirest.repository.EntityTransaction;
-import com.co.lineadevida.apirest.services.ServicesEmployee;
+import com.co.lineadevida.apirest.models.EntityEmployee;
+import com.co.lineadevida.apirest.models.EntityEnterprise;
+import com.co.lineadevida.apirest.models.EntityTransaction;
 import com.co.lineadevida.apirest.services.ServicesEnterprise;
 import com.co.lineadevida.apirest.services.ServicesTransaction;
 import io.swagger.annotations.Api;
@@ -32,10 +31,11 @@ public class ControllerTransaction {
     }
 
     @ApiOperation(value = "End point insert Transaction")
-    @PostMapping(path = "/Enterprise/{id}/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean>insertTransaction(@RequestBody EntityTransaction transaction, EntityEnterprise id){
+    @PostMapping(path = "/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean>insertTransaction(@RequestBody EntityTransaction transaction){
 
-        return new ResponseEntity<Boolean>(servicesTransaction.insertTransaction(transaction,id),HttpStatus.OK);
+        return new ResponseEntity<Boolean>(servicesTransaction.insertTransaction(transaction),HttpStatus.OK);
+
     }
 
     @ApiOperation(value = "End ponit search transaction")
@@ -51,9 +51,12 @@ public class ControllerTransaction {
     }
 
     @ApiOperation(value = "End ponit delete transaction")
-    @DeleteMapping(path = "/deleteTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> deleteTransaction(@RequestBody EntityTransaction transaction){
-        return new ResponseEntity<Object>(servicesTransaction.deleteTransaction(transaction), HttpStatus.OK) ;
+    @DeleteMapping(path = "/deleteTransaction",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String deleteTransactionId( @RequestBody EntityTransaction idTransaction){
+
+        return servicesTransaction.deleteTransaction(idTransaction);
+
+
     }
 
 }

@@ -1,5 +1,8 @@
 package com.co.lineadevida.apirest.services;
 
+import com.co.lineadevida.apirest.models.EntityEnterprise;
+import com.co.lineadevida.apirest.models.EntityProfile;
+import com.co.lineadevida.apirest.models.EntityTransaction;
 import com.co.lineadevida.apirest.repository.*;
 import org.apache.catalina.webresources.AbstractSingleArchiveResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,8 @@ import java.util.Optional;
 
 @Service
 public class ServicesTransaction {
-
+    private Long income;
+    private Long expenses;
 @Autowired
 RepositoryTransaction repositoryTransaction;
 
@@ -27,9 +31,9 @@ public Optional<EntityTransaction> searchTransaction(Long idTransaction){
     return listSearch;
 }
 
-public Boolean insertTransaction(EntityTransaction transaction, EntityEnterprise id){
+public Boolean insertTransaction(EntityTransaction transaction){
     try{
-        repositoryEnterprise.findById(id.getIdEnterprise());
+
         repositoryTransaction.save(transaction);
     }catch (Exception e){
         return Boolean.FALSE;
@@ -38,7 +42,6 @@ public Boolean insertTransaction(EntityTransaction transaction, EntityEnterprise
 }
 public Boolean editTransaction(EntityTransaction transaction){
     try{
-        repositoryTransaction.findById(transaction.getIdTransaction());
         repositoryTransaction.save(transaction);
     }catch (Exception e){
         return Boolean.FALSE;
@@ -46,19 +49,16 @@ public Boolean editTransaction(EntityTransaction transaction){
     return Boolean.TRUE;
 }
 
-public Boolean deleteTransaction(EntityTransaction transaction){
-    try{
+public String deleteTransaction(EntityTransaction idTransaction) {
 
-        repositoryTransaction.delete(transaction);
-    }catch (Exception e){
-        return Boolean.FALSE;
+    if (idTransaction != null) {
+        repositoryTransaction.delete(idTransaction);
+        return "La transacciòn se elimino exitosamente";
+    } else {
+        return "La Transaccion= " + idTransaction + " No existe";
     }
-    return Boolean.TRUE;
+
 }
-
-
-    private Long income;
-    private Long expenses;
 
 
 }

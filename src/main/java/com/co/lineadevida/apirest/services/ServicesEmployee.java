@@ -1,29 +1,23 @@
 package com.co.lineadevida.apirest.services;
 
 
+import com.co.lineadevida.apirest.models.EntityEmployee;
+import com.co.lineadevida.apirest.models.EntityLicenses;
+import com.co.lineadevida.apirest.models.EntityProfile;
 import com.co.lineadevida.apirest.repository.*;
 import com.co.lineadevida.apirest.util.Enum_RoleName;
-import com.google.common.collect.ObjectArrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ServicesEmployee {
 
 
-    private RepositoryEmployee repositoryEmployee;
-
-
     @Autowired
-    public void setRepository (RepositoryEmployee repositoryEmployee){
-        this.repositoryEmployee = repositoryEmployee;
-    }
-
+     RepositoryEmployee repositoryEmployee;
 
 
     @Autowired
@@ -31,31 +25,54 @@ public class ServicesEmployee {
     @Autowired
     RepositoryLicenses repositoryLicenses;
 
-    @Autowired
-    RepositoryEnterprise repositoryEnterprise;
 
-    public List<EntityEmployee> toList() {
-        List<EntityEmployee> list = repositoryEmployee.findAll();
-        return list;
+
+@Autowired
+ServicesProfile servicesProfile;
+
+
+
+    public List<EntityEmployee> listOfAllEmployees() {
+        List<EntityEmployee> listEmployees = repositoryEmployee.findAll();
+        return listEmployees;
     }
 
-    public Boolean insertEmployee(EntityEmployee employee){
+
+    public String insertEmployee(EntityEmployee employee){
+            EntityEmployee entityEmployee = new EntityEmployee();
+
+
         try{
+            employee.setCreatedAtEmployee(LocalDate.now());
             repositoryEmployee.save(employee);
+            servicesProfile.insertProfile(employee);
+            EntityProfile profile =servicesProfile.insertProfile(employee);
+            employee.setIdProfile(profile);
+
+
+
+
+
 
         }catch (Exception e){
-            return Boolean.FALSE;
+            return "Algo falló, por favor intente nuevamente";
         }
-        return Boolean.TRUE;
+        return "Empleado creado existosamente";
     }
 
 
-    public Optional<EntityEmployee> searchEmployee(Long idEmployee) {
-        return repositoryEmployee.findById(idEmployee);
+    public EntityEmployee searchEmployee(Long idEmployee) {
+        EntityEmployee searchEmployeeId;
+        if(idEmployee != null) {
+            searchEmployeeId = repositoryEmployee.findById(idEmployee).orElse(null);
+        }else {
+           searchEmployeeId = searchEmployee(null);
+        }
+        return searchEmployeeId;
 
     }
 
-    public void updateEmployee(EntityEmployee employee) {
+    public String updateEmployee(EntityEmployee employee) {
 
         EntityEmployee updateEmployee = repositoryEmployee.findById(employee.getIdEmployee()).orElse(null);
 
@@ -74,15 +91,18 @@ public class ServicesEmployee {
         } else if (employee.getRole() != null) {
             updateEmployee.setRole(employee.getRole());
             updateEmployee.setUpdateAtEmployee(LocalDate.now());
-
-
+        }else {
+            return "Algo fallo no se pudo altualizar el empleado";
         }
         repositoryEmployee.save(updateEmployee);
+        return "El empleado " + employee.getNameEmployee() + " se actualizo existosamente";
     }
 
     public String deleteEmployee(EntityEmployee idEmployee){
+        EntityProfile profile = null;
         if(idEmployee !=null) {
              repositoryEmployee.delete(idEmployee);
+            // repositoryProfile.delete(idEmployee.setProfile(););
              return "El usuario se elimino exitosamente";
         }else{
             return "El id = " + idEmployee +" No existe";

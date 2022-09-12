@@ -1,10 +1,11 @@
-package com.co.lineadevida.apirest.repository;
+package com.co.lineadevida.apirest.models;
 
 import com.co.lineadevida.apirest.util.Enum_RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,9 +15,12 @@ import java.util.Collection;
 @Entity
 @Table(name = "employee")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class EntityEmployee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idEmployee", nullable = false)
     private Long idEmployee;
 
@@ -35,8 +39,8 @@ public class EntityEmployee {
     @Column(name = "name_role")
     Enum_RoleName role;
 
-    @Column(name = "createdAtEmployee", nullable = false)
-    private LocalDate createdAtEmployee = LocalDate.now();
+    @Column(name = "createdAtEmployee", nullable = true)
+    private LocalDate createdAtEmployee;
 
     @Column(name = "updateAtEmployee")
     private LocalDate updateAtEmployee;
@@ -46,14 +50,13 @@ public class EntityEmployee {
     private Collection<EntityLicenses> permisosCollection;
 
 
-    @JoinColumn(name = "idEnterprise",referencedColumnName = "idEnterprise")
     @ManyToOne  (optional = false)
+    @JoinColumn(name = "idEnterprise",referencedColumnName = "idEnterprise")
     private EntityEnterprise idEnterprise;
 
+    @JsonIgnore
     @OneToOne (cascade = CascadeType.ALL, mappedBy = "idEmployee")
-    private EntityProfile  profile;
+    EntityProfile idProfile;
 
-
-
-    }
+}
 

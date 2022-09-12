@@ -1,17 +1,21 @@
-package com.co.lineadevida.apirest.repository;
+package com.co.lineadevida.apirest.models;
 
-import com.co.lineadevida.apirest.util.Enum_RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 @Table(name = "enterprise")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class EntityEnterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,20 +34,21 @@ public class EntityEnterprise {
     @Column(name = "addressEnterprise", nullable = false)
     private String addressEnterprise;
 
-    @Column(name = "createdAtEnterprise", nullable = false)
-    private LocalDate createdAtEnterprise = LocalDate.now();
+    @Column(name = "createdAtEnterprise", nullable = true)
+    private LocalDate createdAtEnterprise ;
 
     @Column(name = "updateAtEnterprise", nullable = true)
     private LocalDate updateAtEnterprise ;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTransaction")
-    EntityTransaction[] transactions;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idEnterprise")
+    private Collection <EntityTransaction> transactionsCollection;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idEnterprise")
     private Collection<EntityEmployee> employeesCollection;
+
+
 
 
 }

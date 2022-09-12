@@ -1,48 +1,38 @@
 package com.co.lineadevida.apirest.services;
 
 
-import com.co.lineadevida.apirest.repository.EntityEmployee;
-import com.co.lineadevida.apirest.repository.EntityEnterprise;
-import com.co.lineadevida.apirest.repository.RepositoryEmployee;
+import com.co.lineadevida.apirest.models.EntityEnterprise;
 import com.co.lineadevida.apirest.repository.RepositoryEnterprise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ServicesEnterprise {
 
 
-private RepositoryEnterprise repositoryEnterprise;
+ @Autowired
+    RepositoryEnterprise repositoryEnterprise;
 
 
 
-    @Autowired
-    public void setRepository (RepositoryEnterprise repositoryEnterprise){
-        this.repositoryEnterprise = repositoryEnterprise;
-    }
-
-
-
-
-
-    public List<EntityEnterprise> toList(){
-    List<EntityEnterprise> listEnterprise = repositoryEnterprise.findAll();
-    return listEnterprise;
+    public List<EntityEnterprise> listOfAllEnterprises(){
+    List<EntityEnterprise> listEnterprises = repositoryEnterprise.findAll();
+    return listEnterprises;
 }
 
 
-public Boolean insertEnterprise(EntityEnterprise enterprise){
+public String insertEnterprise(EntityEnterprise enterprise){
     try{
+        enterprise.setCreatedAtEnterprise(LocalDate.now());
         repositoryEnterprise.save(enterprise);
 
     }catch (Exception e){
-        return Boolean.FALSE;
+        return "Algo falló, por gavor intente nuevamente";
     }
-    return Boolean.TRUE;
+    return "Empresa creada exitosamente";
 }
 
     public EntityEnterprise searchEnterpriseId(Long idEnterprise) {
@@ -51,7 +41,8 @@ public Boolean insertEnterprise(EntityEnterprise enterprise){
 
     }
 
-    public void updateEnterprise(EntityEnterprise enterprise) {
+
+    public String updateEnterprise(EntityEnterprise enterprise) {
 
         EntityEnterprise updateEnterprise = repositoryEnterprise.findById(enterprise.getIdEnterprise()).orElse(null);
 
@@ -68,11 +59,19 @@ public Boolean insertEnterprise(EntityEnterprise enterprise){
             updateEnterprise.setPhoneEnterprise(enterprise.getPhoneEnterprise());
             updateEnterprise.setUpdateAtEnterprise(LocalDate.now());
 
+        }else {
+           return  "Algo falló no se pudo realizar la actualizaciòn";
         }
         repositoryEnterprise.save(updateEnterprise);
+        return "Se actualizo exitosamente";
     }
-    public void deleteEnterprise(Long idEnterprise){
-       repositoryEnterprise.deleteById(idEnterprise);
+    public String deleteEnterprise(Long idEnterprise){
+        try {
+            repositoryEnterprise.deleteById(idEnterprise);
+        }catch (Exception e){
+          return "Algo falló, por favor intente nuevamente";
 
+        }
+         return "Empresa Eliminada exitosamente";
     }
 }

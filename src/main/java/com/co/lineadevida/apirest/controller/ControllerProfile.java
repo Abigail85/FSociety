@@ -1,6 +1,7 @@
 package com.co.lineadevida.apirest.controller;
 
-import com.co.lineadevida.apirest.repository.EntityProfile;
+import com.co.lineadevida.apirest.models.EntityEmployee;
+import com.co.lineadevida.apirest.models.EntityProfile;
 import com.co.lineadevida.apirest.services.ServicesProfile;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,14 +22,15 @@ public class ControllerProfile {
     ServicesProfile servicesProfile;
 
 
-    @ApiOperation(value = "End ponit search profile")
-    @GetMapping(path = "/searchProfile/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "End point to list Profile ")
+    @GetMapping(path = "/listProfiles",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> listProfiles(){
 
-    public ResponseEntity<Object> searchProfile(@PathVariable Long id){
+        return new ResponseEntity<Object>(servicesProfile.listOfAllProfile(), HttpStatus.OK) ;
 
-        return new ResponseEntity<Object>(servicesProfile.searchProfile(id), HttpStatus.OK) ;
 
     }
+
 
     @ApiOperation(value = "end point to update a profile")
     @PatchMapping(path = "/updateProfile",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,8 +1,10 @@
-package com.co.lineadevida.apirest.repository;
+package com.co.lineadevida.apirest.models;
 
-import com.co.lineadevida.apirest.util.Enum_RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +13,9 @@ import java.util.Date;
 @Entity
 @Table(name = "transaction")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class EntityTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,8 +34,9 @@ public class EntityTransaction {
     @Column(name = "updateAtTransaction", nullable = true)
     private Date updateAtTransaction;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn (name = "idEnterprise")
-    EntityEnterprise enterprise;
+
+    @ManyToOne  (optional = false)
+    @JoinColumn(name = "idEnterprise",referencedColumnName = "idEnterprise")
+    private EntityEnterprise idEnterprise;
 
 }
