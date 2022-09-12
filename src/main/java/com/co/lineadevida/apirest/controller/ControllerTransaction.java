@@ -27,14 +27,14 @@ public class ControllerTransaction {
     @ApiOperation(value = "End point to list Transaction ")
     @GetMapping(path = "/listTransaction",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> listTransaction(){
-        return new ResponseEntity<Object>(servicesTransaction.toList(), HttpStatus.OK) ;
+        return new ResponseEntity<Object>(servicesTransaction.listOfAllTransactions(), HttpStatus.OK) ;
     }
 
     @ApiOperation(value = "End point insert Transaction")
     @PostMapping(path = "/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean>insertTransaction(@RequestBody EntityTransaction transaction){
+    public ResponseEntity<EntityTransaction>insertTransaction(@RequestBody EntityTransaction transaction){
 
-        return new ResponseEntity<Boolean>(servicesTransaction.insertTransaction(transaction),HttpStatus.OK);
+        return new ResponseEntity(servicesTransaction.insertTransaction(transaction),HttpStatus.OK);
 
     }
 

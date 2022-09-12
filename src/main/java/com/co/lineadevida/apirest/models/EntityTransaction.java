@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -18,7 +19,7 @@ import java.util.Date;
 
 public class EntityTransaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "idTransaction", nullable = false)
     private Long idTransaction;
 
@@ -32,11 +33,11 @@ public class EntityTransaction {
     private LocalDate createdAtTransaction = LocalDate.now();
 
     @Column(name = "updateAtTransaction", nullable = true)
-    private Date updateAtTransaction;
-
+    private LocalDate updateAtTransaction;
 
     @ManyToOne  (optional = false)
     @JoinColumn(name = "idEnterprise",referencedColumnName = "idEnterprise")
     private EntityEnterprise idEnterprise;
+
 
 }
