@@ -1,10 +1,8 @@
 package com.co.lineadevida.apirest.services;
 
-import com.co.lineadevida.apirest.models.EntityEmployee;
-import com.co.lineadevida.apirest.models.EntityEnterprise;
-import com.co.lineadevida.apirest.models.EntityProfile;
-import com.co.lineadevida.apirest.models.EntityTransaction;
+import com.co.lineadevida.apirest.models.*;
 import com.co.lineadevida.apirest.repository.*;
+import com.co.lineadevida.apirest.util.Enum_RoleName;
 import org.apache.catalina.webresources.AbstractSingleArchiveResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,8 @@ import java.util.Optional;
 
 @Service
 public class ServicesTransaction {
-    private Long income;
-    private Long expenses;
+    private  String income;
+    private String expenses;
 
     @Autowired
     RepositoryTransaction repositoryTransaction;
@@ -49,18 +47,21 @@ public EntityTransaction searchTransaction(Long idTransaction) {
 
 }
 
-public String insertTransaction(EntityTransaction transaction){
-    EntityTransaction entityTransaction = new EntityTransaction();
-
+public String insertTransaction(EntityTransaction transaction) {
     try{
         transaction.setCreatedAtTransaction(LocalDate.now());
         repositoryTransaction.save(transaction);
 
+
     }catch (Exception e){
         return "Algo falló, por favor intente nuevamente";
     }
-    return "Transacción creada existosamente";
+    return "Empleado creado existosamente";
 }
+
+
+
+
 
 public String editTransaction(EntityTransaction transaction) {
 

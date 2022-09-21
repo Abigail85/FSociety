@@ -18,6 +18,7 @@ private String mensaje;
     @Autowired
     RepositoryProfile repositoryProfile;
 
+
     public List<EntityProfile> listOfAllProfile() {
         List<EntityProfile> listProfiles = repositoryProfile.findAll();
         return listProfiles;
@@ -34,9 +35,6 @@ private String mensaje;
           profile.setIdEmployee(employee);
           repositoryProfile.save(profile);
          return profile;
-
-
-
     }
     public EntityProfile updateProfile( EntityProfile profile) {
 
@@ -61,6 +59,13 @@ private String mensaje;
 
         return updateProfile;
 
+    }
+    public void deleteProfile(EntityEmployee idEmployee) {
+
+         EntityProfile entityProfile = new EntityProfile();
+         entityProfile.setIdProfile(idEmployee.getIdEmployee());
+          repositoryProfile.deleteById(entityProfile.getIdProfile());
+          //return "Perfril eliminado exitosamente";
     }
 
 

@@ -71,7 +71,7 @@ public class ControllerEmployee {
 
     }
     @ApiOperation(value = "End point delete employee por le iD")
-    @DeleteMapping(value = "/deleteEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/deleteEmployee")
     public String deleteEmployeeId( @RequestBody EntityEmployee idEmployee){
 
        return servicesEmployee.deleteEmployee(idEmployee);

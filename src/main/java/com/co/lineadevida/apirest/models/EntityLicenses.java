@@ -25,7 +25,7 @@ public class EntityLicenses {
     private Boolean save;
 
     @Column(name = "finbyall")
-    private Boolean writing;
+    private Boolean reading;
 
     @Column(name = "update")
     private Boolean update;
@@ -38,6 +38,6 @@ public class EntityLicenses {
     private EntityEmployee idEmployee;
 
 
-    public EntityLicenses(boolean save, boolean writing, boolean update, boolean delete, EntityEmployee employee) {
+    public EntityLicenses(boolean save, boolean writing, boolean update, boolean delete, EntityEmployee idEmployee) {
     }
 }

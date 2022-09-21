@@ -1,0 +1,54 @@
+// Grayscale Text Utilities
+
+.text-xs {
+  font-size: .7rem;
+}
+
+.text-lg {
+  font-size: 1.2rem;
+}
+
+.text-gray-100 {
+  color: #717384 !important;
+}
+
+.text-gray-200 {
+  color: #858796 !important;
+}
+
+.text-gray-300 {
+  color: #b7b9cc !important;
+}
+
+.text-gray-400 {
+  color: #60616f !important;
+}
+
+.text-gray-500 {
+  color: #5a5c69 !important;
+}
+
+.text-gray-600 {
+  color: #6c6e7e !important;
+}
+
+.text-gray-700 {
+  color: #6b6d7d !important;
+}
+
+.text-gray-800 {
+  color: #6e707e !important;
+}
+
+.text-gray-900 {
+  color: #6c757d !important;
+}
+
+.icon-circle {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

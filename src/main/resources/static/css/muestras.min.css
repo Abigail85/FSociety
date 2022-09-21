@@ -1,0 +1,10 @@
+.muestracolor {
+    display: block;
+    padding: 10px;
+}
+
+.muestra {
+    display: block;
+    height: 25px;
+    width: 25px;
+}
