@@ -21,7 +21,7 @@ public class ServicesEnterprise {
     public List<EntityEnterprise> listOfAllEnterprises(){
     List<EntityEnterprise> listEnterprises = repositoryEnterprise.findAll();
     return listEnterprises;
-}
+    }
 
 
 public String insertEnterprise(EntityEnterprise enterprise){

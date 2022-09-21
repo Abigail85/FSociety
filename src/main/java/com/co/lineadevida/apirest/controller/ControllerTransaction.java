@@ -32,7 +32,7 @@ public class ControllerTransaction {
 
     @ApiOperation(value = "End point insert Transaction")
     @PostMapping(path = "/insertTransaction",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EntityTransaction>insertTransaction(@RequestBody EntityTransaction transaction){
+    public ResponseEntity<EntityTransaction>insertTransaction(@RequestBody EntityTransaction transaction,EntityEmployee employee){
 
         return new ResponseEntity(servicesTransaction.insertTransaction(transaction),HttpStatus.OK);
 

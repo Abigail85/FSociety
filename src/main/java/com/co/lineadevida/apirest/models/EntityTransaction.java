@@ -26,6 +26,8 @@ public class EntityTransaction {
     @Column(name = "concept", nullable = false)
     private String concept;
 
+    private String mensaje;
+
     @Column(name = "amount", nullable = false)
     private Float amount;
 

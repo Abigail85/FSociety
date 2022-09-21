@@ -39,8 +39,6 @@ ServicesProfile servicesProfile;
 
 
     public String insertEmployee(EntityEmployee employee){
-            EntityEmployee entityEmployee = new EntityEmployee();
-
 
         try{
             employee.setCreatedAtEmployee(LocalDate.now());
@@ -49,16 +47,12 @@ ServicesProfile servicesProfile;
             EntityProfile profile =servicesProfile.insertProfile(employee);
             employee.setIdProfile(profile);
 
-
-
-
-
-
         }catch (Exception e){
             return "Algo falló, por favor intente nuevamente";
         }
         return "Empleado creado existosamente";
     }
+
 
 
     public EntityEmployee searchEmployee(Long idEmployee) {
@@ -99,34 +93,41 @@ ServicesProfile servicesProfile;
     }
 
     public String deleteEmployee(EntityEmployee idEmployee){
-        EntityProfile profile = null;
-        if(idEmployee !=null) {
-             repositoryEmployee.delete(idEmployee);
-            // repositoryProfile.delete(idEmployee.setProfile(););
-             return "El usuario se elimino exitosamente";
-        }else{
+        servicesProfile.deleteProfile(idEmployee);
+        try {
+            repositoryEmployee.delete(idEmployee);
+
+        }catch (Exception e){
             return "El id = " + idEmployee +" No existe";
         }
 
+        return "El usuario se elimino exitosamente";
 
     }
-    public void insertEmployeeRol(EntityEmployee employee){
+    public String insertEmployeeRol(EntityEmployee employee){
 
-        if(employee.getRole().equals(Enum_RoleName.ROLE_ADMIN)){
-            repositoryEmployee.save(employee);
-            EntityLicenses entityRol = new EntityLicenses(true,true,true,true,employee);
-            repositoryLicenses.save(entityRol);
+        try{
+            if(employee.getRole().equals(Enum_RoleName.ROLE_ADMIN)){
+                EntityLicenses entityRol = new EntityLicenses(true,true,true,true,employee);
+                repositoryLicenses.save(entityRol);
+                employee.setPermisosCollection(entityRol.getIdEmployee().getPermisosCollection());
+                repositoryEmployee.save(employee);
+            }else if(employee.getRole().equals(Enum_RoleName.ROLE_OPERARIO)){
+               EntityLicenses entityRol = new EntityLicenses(false,true,false,false,employee);
+                repositoryLicenses.save(entityRol);
+                employee.setPermisosCollection(entityRol.getIdEmployee().getPermisosCollection());
+                repositoryEmployee.save(employee);
 
-        }else if(employee.getRole().equals(Enum_RoleName.ROLE_OPERARIO)){
-            repositoryEmployee.save(employee);
-            EntityLicenses entityRol = new EntityLicenses(true,false,false,false,employee);
-            repositoryLicenses.save(entityRol);
-
-        }else{
-            System.out.println("Este rol no existe" );
+            }else{
+                System.out.println("Este rol no existe" );
+           }
+        }catch (Exception e){
+            return "Algo falló, por favor intente nuevamente";
         }
+        return "Empleado creado existosamente";
     }
 }
+
 
 
 
