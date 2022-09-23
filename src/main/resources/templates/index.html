@@ -78,28 +78,17 @@ un texto que va a definir que es lo que hay en sta página-->
             <!-- Nav Item - Pages Collapse Menu -->
            <!--El espacio que hay entre interfaz y lotes-->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                   <!--el icono de la herramienta-->
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <button onclick="location.href='/listaEmpresas'">Empresa</button>
+                    <span>Empresa</span>
                 </a>
-                <!--es espacio-->
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                   <!--para que me muestre el menu de abajo-->
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!--me muestra la cajita en blanco-->
-                        <h6 class="collapse-header">Crear Empresa:</h6>
-                        <!--Me muestra la manito de y no la direccion donde me lleva-->
-                        <a class="collapse-item"  href="vista/enterprise.html">Crear una empresa</a>
-
-                    </div>
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Editar Empresa:</h6>
-                        <a class="collapse-item"  href='vista/enterprise'>Gestionar Salida de Lotes</a>
+                        <h6 class="collapse-header">Transaction:</h6>
+                        <a class="collapse-item"  onclick="location.href='vista/enterprise.html'">Gestionar Empresas</a>
 
                     </div>
                 </div>
-
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">

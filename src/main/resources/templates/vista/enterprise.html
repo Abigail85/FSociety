@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Confecciones Línea de Vida</title>
+    <title>Proyecto Udea FSociety</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
-    <link href="index.html"><link>
+    <link rel="icon" type="image/x-icon" href="/static/img/undraw_rocket.svg">
+    <link href="/vista/index.html"><link>
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -31,12 +31,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" onclick="location.href='index.html'">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" onclick="location.href='/vista/index.html'">
                 <div class="sidebar-brand-icon rotate-n-10">
                     <!--<i class="fas fa-laugh-wink"></i>-->
                     <img src="/static/img/logo.png" alt="" height="40px">
                 </div>
-                <div class="sidebar-brand-text mx-3">Confecciones Línea de Vida <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Proyecto Udea FSociety<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" onclick="location.href ='index.html'">
+                <a class="nav-link" onclick="location.href ='/vista/index.html'">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Inicio</span></a>
             </li>
@@ -57,53 +57,6 @@
                 Interface
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="lotes.html" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Lotes</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Entrada de lote:</h6>
-                        <a class="collapse-item" href="lotes.html">Gestionar Ingreso de Lotes</a>
-
-                    </div>
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Salida de lote:</h6>
-                        <a class="collapse-item" href="salidalotes.html">Gestionar Salida de Lotes</a>
-
-                    </div>
-                </div>
-
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Facturas</span>
-                </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Facturas:</h6>
-                        <a class="collapse-item" href="facturas.html">Gestionar Facturas</a>
-
-                    </div>
-                </div>
-            </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Proveedores</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Proveedores:</h6>
-                        <a class="collapse-item" href="enterprise.html">Gestionar Proveedores</a>
-
-                    </div>
-                </div>
-            </li>
 
 
         </ul>
@@ -198,12 +151,12 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"></h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#crearModal"><i
-            class="fas fa-download fa-sm text-white-50"></i> Nuevo Proveedor</a>
+            class="fas fa-download fa-sm text-white-50"></i> Nueva Empresa</a>
                     </div>
 
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Proveedores</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Empresa</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -219,8 +172,7 @@
                                             <th>Nombre</th>
                                             <th>Dirección</th>
                                             <th>Teléfono</th>
-                                            <th>Encargada de Producción</th>
-                                            <th>Acciones</th>
+
                                         </tr>
                                     </thead>
 
@@ -307,7 +259,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Confecciones Línea de Vida S.A. 2021</span>
+                        <span>Copyright &copy; Proyecto Udea FSociety</span>
                     </div>
                 </div>
             </footer>
@@ -358,7 +310,7 @@
                     <!--         campos              -->
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Datos del Proveedor</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Datos de la empresa</h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
@@ -384,12 +336,7 @@
                                 <input type="text" class="form-control form-control-user" id="txtTelefono" placeholder="Teléfono" value="(574) 375 75 00">
 
                             </div>
-                            <div class="form-group">
 
-                                <label for="txtNombrePersonaCargo">Encargada de Producción</label>
-                                <input type="text" class="form-control form-control-user" id="txtNombrePersonaCargo" placeholder="Nombre" value="Isabel">
-
-                            </div>
 
                             <a href="#" class="btn btn-primary btn-user btn-block" data-dismiss="modal">
                             Actualizar
@@ -411,7 +358,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Proveedor</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva Empresa</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -420,7 +367,7 @@
                     <!--         campos              -->
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Ingresa el Proveedor</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Ingresa la Empresa</h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
@@ -446,12 +393,7 @@
                                 <input type="text" class="form-control form-control-user" id="txtTelefono" placeholder="Teléfono">
 
                             </div>
-                            <div class="form-group">
 
-                                <label for="txtNombrePersonaCargo">Nombre encargada de producción</label>
-                                <input type="text" class="form-control form-control-user" id="txtNombrePersonaCargo" placeholder="Nombre">
-
-                            </div>
 
                             <a href="#" class="btn btn-primary btn-user btn-block" data-dismiss="modal">
                             Guardar
@@ -473,7 +415,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ver Detalles del proveedor</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ver Detalles de la empresa</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -482,7 +424,7 @@
                     <!--         campos              -->
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Datos del Proveedor</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Datos de la empresa</h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
@@ -508,12 +450,8 @@
                                 <input type="text" class="form-control form-control-user" id="txtTelefono" placeholder="Teléfono" value="(574) 375 75 00" readonly="readonly">
 
                             </div>
-                            <div class="form-group">
 
-                                <label for="txtNombrePersonaCargo">Nombre de la encargada de producción</label>
-                                <input type="text" class="form-control form-control-user" id="txtNombrePersonaCargo" placeholder="Nombre" value="Isabel" readonly="readonly">
 
-                            </div>
 
 
                             <button class="btn btn-primary btn-user btn-block" type="button" data-dismiss="modal">Cerrar Detalles</button>
@@ -537,15 +475,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Realmente quieres eliminar el proveedor?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Realmente quieres eliminar la empresa?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Selecciona "Eliminar Proveedor" a continuación si deseas borrar el proveedor.</div>
+                <div class="modal-body">Selecciona "Eliminar Empresa" a continuación si deseas borrarla empresa.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="#" data-dismiss="modal">Eliminar Proveedor</a>
+                    <a class="btn btn-primary" href="#" data-dismiss="modal">Eliminar Empresa</a>
                 </div>
             </div>
         </div>
