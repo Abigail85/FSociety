@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
 
-    <title>Confecciones Línea de Vida</title>
+    <title>Proyecto Udea FSociety</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,10 +43,18 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link"  onclick="location.href='../index.html'">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Inicio</span></a>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>inicio</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Inicio:</h6>
+                        <a class="collapse-item"  onclick="location.href='../index.html'">Regresar al Inicio</a>
+
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -152,6 +160,9 @@
 
                                                     <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#editModal">
                                                         <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#detallesModal">
+                                                        <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="#" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#eliminarModal">
                                                         <i class="fas fa-trash"></i>
