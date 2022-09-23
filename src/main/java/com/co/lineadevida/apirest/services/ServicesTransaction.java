@@ -65,29 +65,25 @@ public String insertTransaction(EntityTransaction transaction) {
 
 public String editTransaction(EntityTransaction transaction) {
 
-    EntityTransaction updateTransaction = repositoryTransaction.findById(transaction.getIdTransaction()).orElse(null);
+    EntityTransaction editTransaction = repositoryTransaction.findById(transaction.getIdTransaction()).orElse(null);
 
-    if (transaction.getIdTransaction() != null) {
-        updateTransaction.setIdTransaction((transaction.getIdTransaction()));
-        updateTransaction.setUpdateAtTransaction(LocalDate.now());
-    } else if (transaction.getConcept() != null) {
-        updateTransaction.setConcept((transaction.getConcept()));
-        updateTransaction.setUpdateAtTransaction(LocalDate.now());
+    if (transaction.getConcept() != null) {
+        editTransaction.setConcept((transaction.getConcept()));
+        editTransaction.setUpdateAtTransaction(LocalDate.now());
     } else if (transaction.getAmount() != null) {
-        updateTransaction.setAmount(transaction.getAmount());
-        updateTransaction.setUpdateAtTransaction(LocalDate.now());
+        editTransaction.setAmount(transaction.getAmount());
+        editTransaction.setUpdateAtTransaction(LocalDate.now());
     }else {
         return "Algo fallo no se pudo altualizar la transacción";
     }
-    repositoryTransaction.save(updateTransaction);
+    repositoryTransaction.save(editTransaction);
     return "La transacción " + transaction.getIdTransaction() + " se actualizo existosamente";
 }
 
 public String deleteTransaction(EntityTransaction idTransaction) {
-    EntityProfile profile = null;
     if (idTransaction != null) {
         repositoryTransaction.delete(idTransaction);
-        return "La transacciòn se elimino exitosamente";
+        return "La transacciòn " + idTransaction + " se elimino exitosamente";
     } else {
         return "La Transaccion= " + idTransaction + " No existe";
     }

@@ -45,9 +45,11 @@ public class ControllerTransaction {
     }
 
     @ApiOperation(value = "End ponit edit transaction")
-    @PatchMapping(path = "/editTransaction/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> editTransaction(@RequestBody EntityTransaction transaction){
-        return new ResponseEntity<Object>(servicesTransaction.editTransaction(transaction), HttpStatus.OK) ;
+    @PatchMapping(value = "/editTransaction",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public String editTransaction( @RequestBody EntityTransaction transaction){
+
+        return servicesTransaction.editTransaction(transaction);
+
     }
 
     @ApiOperation(value = "End ponit delete transaction")
