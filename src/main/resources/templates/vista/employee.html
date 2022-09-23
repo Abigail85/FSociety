@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
 
-    <title>Transacciones</title>
+    <title>Empleados</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -119,7 +119,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"></h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#crearModal"><i
-            class="fas fa-download fa-sm text-white-50"></i> Nueva Transacción</a>
+            class="fas fa-download fa-sm text-white-50"></i> Nuevo Empleado</a>
                     </div>
 
 
@@ -132,20 +132,20 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Concepto</th>
-                                            <th>Monto</th>
-                                            <th>Fecha</th>
-                                            <th>Empleado</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Documento</th>
+                                            <th>Email</th>
                                         </tr>
                                    
                             
                                     </tfoot>
                                     <tbody>
-                                        <tr th:each="transaction : ${transactions}">
-                                            <td th:text="${transactions.concept}"></td>
-                                            <td th:text="${transactions.amount}"></td>
-                                            <td th:text="${transactions.date}"></td>
-                                            <td th:text="${transactions.employee}"></td>
+                                        <tr th:each="employee : ${employees}">
+                                            <td th:text="${employees.name}"></td>
+                                            <td th:text="${employees.lastName}"></td>
+                                            <td th:text="${employees.nroDocument}"></td>
+                                            <td th:text="${employees.email}"></td>
 
                                             <td>
                                                 <div class="row">
@@ -217,7 +217,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Transacción</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Empleado</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -226,23 +226,29 @@
                     <!--         campos              -->
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Datos de la transacción</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Datos del empleado</h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
                                 <div class="">
-                                    <label for="txtConcepto">Concepto</label>
-                                    <input type="text" class="form-control form-control-user" id="txtConcepto" placeholder="Ingreso/Egreso">
+                                    <label for="txtNombre">Nombre</label>
+                                    <input type="text" class="form-control form-control-user" id="txtNombre" placeholder="Nombre" value=" ">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="txtMonto">Monto</label>
-                                <input type="text" class="form-control form-control-user" id="txtMonto" placeholder="0.0">
+                                <div class="">
+                                    <label for="txtApellido">Apellido</label>
+                                    <input type="text" class="form-control form-control-user" id="txtApellido" placeholder="Apellido" value=" ">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtDocumento">Documento</label>
+                                <input type="text" class="form-control form-control-user" id="txtDocumento" placeholder="# Documento" value=" ">
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    <label for="txtEmpleado">Empleado</label>
-                                    <input type="text" class="form-control form-control-user" id="txtEmpleado" placeholder="Id del empleado">
+                                    <label for="txtEmail">Email</label>
+                                    <input type="text" class="form-control form-control-user" id="txtEmail" placeholder="Email" value=" ">
                                 </div>
                             </div>
                             <a href="#" class="btn btn-primary btn-user btn-block" data-dismiss="modal">
@@ -265,7 +271,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nueva Transacción</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Empleado</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -274,23 +280,29 @@
                     <!--         campos              -->
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Ingresar Movimiento</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Ingresar Empleado</h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
                                 <div class="">
-                                    <label for="txtConcepto">Concepto</label>
-                                    <input type="text" class="form-control form-control-user" id="txtConcepto" placeholder="Ingreso/Egreso">
+                                    <label for="txtNombre">Nombre</label>
+                                    <input type="text" class="form-control form-control-user" id="txtNombre" placeholder="Nombre">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="txtMonto">Monto</label>
-                                <input type="text" class="form-control form-control-user" id="txtMonto" placeholder="0.0">
+                                <div class="">
+                                    <label for="txtApellido">Apellido</label>
+                                    <input type="text" class="form-control form-control-user" id="txtApellido" placeholder="Apellido">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtDocumento">Documento</label>
+                                <input type="text" class="form-control form-control-user" id="txtDocumento" placeholder="# Documento">
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    <label for="txtEmpleado">Empleado</label>
-                                    <input type="text" class="form-control form-control-user" id="txtEmpleado" placeholder="Id del empleado">
+                                    <label for="txtEmail">Email</label>
+                                    <input type="text" class="form-control form-control-user" id="txtEmail" placeholder="Email">
                                 </div>
                             </div>
                             <a href="#" class="btn btn-primary btn-user btn-block" data-dismiss="modal">
@@ -309,22 +321,20 @@
     </div>
 
     <!-- Modal Detalles-->
-
-
-    <!-- Modal Eliminar transacción-->
+    <!-- Modal Eliminar Empleado-->
     <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Realmente quieres eliminar la transacción?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Realmente quieres eliminar el empleado?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Selecciona "Eliminar Transacción" a continuación si deseas borrar la transacción.</div>
+                <div class="modal-body">Selecciona "Eliminar Empleado" a continuación si deseas borrar al empleado.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="#" data-dismiss="modal">Eliminar Transacción</a>
+                    <a class="btn btn-primary" href="#" data-dismiss="modal">Eliminar Empleado</a>
                 </div>
             </div>
         </div>
