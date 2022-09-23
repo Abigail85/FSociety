@@ -9,13 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Proyecto Udea FSociety - Registro</title>
+    <title>Proyecto Udea FSociety - Perfil</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="/static/img/undraw_rocket.svg">
+
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -33,15 +33,21 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Crear cuenta de usuario!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Actualizar tu perfil!</h1>
                             </div>
                             <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombres">
+                                        <input type="text" class="form-control form-control-user" id="exampleIdEmpleado" placeholder="id del empleado">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Apellidos">
+                                        <input type="image" class="form-control form-control-user" id="exampleImagen" placeholder="Imagen">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleTelefono" placeholder="telefono">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleDireccion" placeholder="Direccion">
                                     </div>
                                 </div>
                                 <!--<div class="form-group">
@@ -55,8 +61,8 @@
                                         <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirmar contraseña">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Registrar Usuario
+                                <a onclick="location.href='/templates/vista/login.html'" class="btn btn-primary btn-user btn-block">
+                                    Actualizar Perfil
                                 </a>
                                 <hr>
                                 <!--
