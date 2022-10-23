@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.view.RedirectView;
 
 
 @Api(tags = "Enterprise",description = "Metodos para el api empresa")
@@ -42,9 +43,15 @@ public class ControllerEnterprise {
 
     }
     @ApiOperation(value = "End point editar una empresa  por le iD")
-    @PatchMapping(value = "/updateEnterprise",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateEnterpriseId(@RequestBody EntityEnterprise enterprise){
-        return servicesEnterprise.updateEnterprise(enterprise);
+    @PutMapping(value = "/updateEnterprise")
+    public RedirectView updateEnterprise(@ModelAttribute EntityEnterprise enterprise, Model model){
+
+        model.addAttribute(enterprise);
+        if(servicesEnterprise.updateEnterprise(enterprise).equals(Boolean.TRUE)){
+            return new RedirectView("enterprise");
+        }else {
+            return new RedirectView("404");
+        }
 
     }
     @ApiOperation(value = "End point delete enterprise por le iD")
